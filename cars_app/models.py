@@ -2,6 +2,8 @@ from django.db import models
 from django.contrib.auth.models import AbstractUser
 from django.core.validators import MaxLengthValidator,MinLengthValidator
 from django.db.models.deletion import CASCADE
+from location_field.models.plain import PlainLocationField
+
 # Create your models here.
 class User(AbstractUser):
     full_name = models.CharField(max_length=60)
@@ -33,4 +35,33 @@ class Car(models.Model):
     car_location = models.ForeignKey("Location",on_delete=CASCADE)
 
 class Location(models.Model):
-    pass
+    city = models.CharField(max_length=255)
+    location_point = PlainLocationField(based_fields=['city'], zoom=7)
+
+    def save_location(self):
+        self.save()
+
+    def delete_location(self):
+        self.delete()
+
+    def __str__(self):
+        return self.city
+
+class Contact(models.Model):
+    name = models.CharField(max_length = 30)
+    email = models.EmailField()
+    message = models.TextField()
+
+    def save_contact(self):
+        self.save()
+
+    def delete_contact(self):
+        self.delete()
+
+    def __str__(self):
+        return self.name
+    
+    @classmethod
+    def update_contact(cls, id ,name,email ,message):
+        update = cls.objects.filter(id = id).update(name = name,email = email,message=message)
+        return update

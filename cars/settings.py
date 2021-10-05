@@ -49,6 +49,7 @@ INSTALLED_APPS = [
     'cloudinary',
     'crispy_forms',
     'rest_framework',
+    'location_field.apps.DefaultConfig',
     
     ]
 

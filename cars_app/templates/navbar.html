@@ -1,5 +1,4 @@
-{% load cart_template_tags %}
-<nav class="navbar navbar-expand-lg navbar-light bg-info">
+<nav class="navbar navbar-expand-lg navbar-light bg-warning">
   <a class="navbar-brand" href="{% url 'index' %}">Car-Enthusiasm</a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
     aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -9,15 +8,12 @@
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav mr-auto">
       <li class="nav-item active">
-        <a class="nav-link" href="{% url 'index' %}">Home</a>
-      </li>
-      <li class="nav-item active">
-        <a class="nav-link" href="">Contact</a>
+        <a class="nav-link" href="{% url 'contact' %}">Contact</a>
       </li>
     </ul>
     <form action="" class="form-inline my-2 my-lg-0">
       <input class="form-control mr-sm-2" name="grocery" type="search" placeholder="Search" aria-label="Search">
-      <button class="btn btn-primary my-2 my-sm-0" type="submit">Search</button>
+      <button class="btn btn-secondary my-2 my-sm-0" type="submit">Search</button>
     </form>
     <ul class="navbar-nav">
       {% if request.user.is_authenticated %}
