@@ -1,7 +1,7 @@
-# Freshy Groceries
+# Car-Enthusiasm
 *****
 ### Description
-This is a web application for online groceries
+This is a web application for car displays
 
 ## Dependencies
 * django-bootstrap
