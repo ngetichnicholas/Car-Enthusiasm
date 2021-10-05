@@ -32,20 +32,8 @@ class Car(models.Model):
     image_2 = models.ImageField(upload_to='cars')
     image_3 = models.ImageField(upload_to='cars')
     image_4 = models.ImageField(upload_to='cars')
-    car_location = models.ForeignKey("Location",on_delete=CASCADE)
-
-class Location(models.Model):
     city = models.CharField(max_length=255)
-    location_point = PlainLocationField(based_fields=['city'], zoom=7)
-
-    def save_location(self):
-        self.save()
-
-    def delete_location(self):
-        self.delete()
-
-    def __str__(self):
-        return self.city
+    car_location = PlainLocationField(based_fields=['city'], zoom=7)
 
 class Contact(models.Model):
     name = models.CharField(max_length = 30)

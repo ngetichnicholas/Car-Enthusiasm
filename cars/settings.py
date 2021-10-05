@@ -162,6 +162,14 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 django_heroku.settings(locals())
 AUTH_USER_MODEL = 'cars_app.User'
 
+
+LOCATION_FIELD = {
+'provider.google.api': '//maps.google.com/maps/api/js?sensor=false',
+'provider.google.api_key': config('MAP_API_KEY'),
+'provider.google.api_libraries': '',
+'provider.google.map.type': 'ROADMAP',
+}
+
 REST_FRAMEWORK = {
     # Use Django's standard `django.contrib.auth` permissions,
     # or allow read-only access for unauthenticated users.
