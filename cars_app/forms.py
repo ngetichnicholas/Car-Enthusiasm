@@ -1,10 +1,11 @@
-from django import forms
+from django import forms 
 from django.contrib.auth.forms import UserCreationForm
 from django.forms import fields
 from .models import User
 from .models import *
 from django.core.validators import MinLengthValidator,MaxLengthValidator
 from location_field.forms.plain import PlainLocationField
+from django.forms import Form, ModelForm, DateField, widgets
 
 
 class UserSignUpForm(UserCreationForm):
@@ -36,3 +37,6 @@ class CarForm(forms.ModelForm):
   class Meta:
     model = Car
     fields = ['car_make','model','year_manufactured','image_1','image_2','image_3','image_4','city','car_location']
+    widgets = {
+            'year_manufactured': widgets.DateInput(attrs={'type': 'date'})
+        }

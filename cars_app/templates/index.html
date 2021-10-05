@@ -25,7 +25,7 @@
         {% for car in cars %}
         <div class="col-md-4 col-sm-6 text-center product">
           <a href="{% url 'car_view' car.id  %}">
-            <img src="{{car.image_1.url}}" width="100%" alt="">
+            <img src="{{car.image_1.url}}" width="100%" alt="image">
           </a>
           <a href="{% url 'car_view' car.id  %}">
             <h5 class="car-name">{{car.car_make}}</h5>
