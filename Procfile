@@ -1,1 +1,1 @@
-web: gunicorn grocery_project.wsgi --log-file -
+web: gunicorn cars.wsgi --log-file -

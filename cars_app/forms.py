@@ -29,3 +29,8 @@ class UpdateUserForm(forms.ModelForm):
   class Meta:
     model = User
     fields = ['username','full_name','email','phone','profile_picture','bio']
+
+class CarForm(forms.ModelForm):
+  class Meta:
+    model = Car
+    fields = ['car_make','model','year_manufactured','image_1','image_2','image_3','image_4','location']

@@ -96,3 +96,18 @@ def update_profile(request):
     'user_form':user_form,
   }
   return render(request,'profile/update.html',params)
+
+@login_required
+def add_car(request):
+  if request.method == 'POST':
+    add_car_form = CarForm(request.POST,request.FILES)
+    if add_car_form.is_valid():
+      car = add_car_form.save(commit=False)
+      car.save()
+      messages.success(request, f'New car added!')
+      return redirect('index')
+
+  else:
+    add_car_form = CarForm()
+    
+  return render(request, 'add_car.html',{'add_car_form':add_car_form})
