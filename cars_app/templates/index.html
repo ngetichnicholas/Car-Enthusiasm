@@ -1,0 +1,42 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-md-2"></div>
+    <div class="col-md-8">
+      <h2 class="text-center">Cars on Display</h2>
+      {% if messages %}
+      {% for message in messages %}
+      <div class="row ">
+        <div class="col-md-4"></div>
+        <div class="col-md-4">
+          <div class="alert text-center {{ message.tags }} alert-dismissible" role="alert" id="messages">
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+            {{ message }}
+          </div>
+        </div>
+        <div class="col-md-4"></div>
+      </div>
+      {% endfor %}
+      {% endif %}
+      <div class="row">
+        {% for car in cars %}
+        <div class="col-md-4 col-sm-6 text-center product">
+          <a href="{% url 'car_view' car.id  %}">
+            <img src="{{car.image_1.url}}" width="100%" alt="">
+          </a>
+          <a href="{% url 'car_view' car.id  %}">
+            <h5 class="car-name">{{car.car_make}}</h5>
+          </a>
+        </div>
+        {% endfor %}
+
+      </div>
+    </div>
+    <div class="col-md-2"></div>
+  </div>
+</div>
+
+{% endblock %}
