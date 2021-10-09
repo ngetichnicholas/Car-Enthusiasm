@@ -33,7 +33,6 @@ class UpdateUserForm(forms.ModelForm):
     fields = ['username','full_name','email','phone','profile_picture','bio']
 
 class CarForm(forms.ModelForm):
-  car_location = PlainLocationField(based_fields=['city'],initial='-22.2876834,-49.1607606')
   class Meta:
     model = Car
     fields = ['car_make','model','year_manufactured','image_1','image_2','image_3','image_4','city','car_location']

@@ -50,6 +50,7 @@ INSTALLED_APPS = [
     'crispy_forms',
     'rest_framework',
     'location_field.apps.DefaultConfig',
+    'django.contrib.gis'
     
     ]
 
@@ -165,7 +166,7 @@ AUTH_USER_MODEL = 'cars_app.User'
 
 LOCATION_FIELD = {
 'provider.google.api': '//maps.google.com/maps/api/js?sensor=false',
-'provider.google.api_key': config('MAP_API_KEY'),
+'provider.google.api_key': 'AIzaSyAdquW1ULcql53ofNtujjjFf1Ty5TGRzLM',
 'provider.google.api_libraries': '',
 'provider.google.map.type': 'ROADMAP',
 }
