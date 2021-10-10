@@ -50,7 +50,6 @@ INSTALLED_APPS = [
     'crispy_forms',
     'rest_framework',
     'location_field.apps.DefaultConfig',
-    'django.contrib.gis'
     
     ]
 
