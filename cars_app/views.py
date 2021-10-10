@@ -156,3 +156,15 @@ def message_view(request, sender, receiver):
                        'receiver': User.objects.get(id=receiver),
                        'messages': Message.objects.filter(sender_id=sender, receiver_id=receiver) |
                                    Message.objects.filter(sender_id=receiver, receiver_id=sender)})
+
+def search(request):
+  if 'car' in request.GET and request.GET["car"]:
+    search_term = request.GET.get("car")
+    searched_cars = Car.search_cars(search_term)
+    message = f"{search_term}"
+
+    return render(request,'search.html', {"message":message,"cars":searched_cars})
+
+  else:
+    message = "You haven't searched for any term"
+    return render(request,'search.html',{"message":message})

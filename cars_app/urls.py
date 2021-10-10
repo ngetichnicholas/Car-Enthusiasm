@@ -18,6 +18,7 @@ urlpatterns = [
     path('chats/', app_views.chat_view, name='chats'),
     path('chat_messages/<int:sender>/<int:receiver>/', app_views.message_view, name='chat_messages'),
     path('api/messages/<int:sender>/<int:receiver>/', app_views.message_list, name='message-detail'),
+    path('search',app_views.search,name='search'),
     path('api/messages/', app_views.message_list, name='message-list'),
 
 ]

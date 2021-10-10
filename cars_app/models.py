@@ -44,6 +44,10 @@ class Car(models.Model):
     def delete_car(self):
         self.delete()
 
+    @classmethod
+    def search_cars(cls, car):
+        return cls.objects.filter(car_make__icontains=car).all()
+
     def __str__(self):
         return self.car_make
 
