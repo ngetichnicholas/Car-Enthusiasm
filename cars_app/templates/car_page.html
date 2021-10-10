@@ -20,19 +20,47 @@
     {% endfor %}
     {% endif %}
     <div class="row">
-      <div class="col-md-3"></div>
-      <div class="col-md-6 car text-center">
-        <div class="card">
-          <div class="card-header">
-            <h5 class="car-name">{{car.car_make}}</h5>
+      <div class="col-md-1"></div>
+      <div class="col-md-10 car text-center">
+        <div class="">
+          <div class="row">
+            <h5 class="car-name">Car Number: {{car.car_make}}, Model {{car.model}}</h5>
           </div>
-          <p>{{car.model}}</p>
-          <img src="{{car.image_1.url}}" alt="">
+          <div class="row">
+            <div class="col-md-6">
+              {% if request.user.is_authenticated %}
+              <div class="">
+                <img class="car-image" src="{{car.image_1.url}}" alt="">
+              </div>
+              <div class="">
+                <img class="car-image" src="{{car.image_2.url}}" alt="">
+              </div>
+              {% else %}
+              <div class="">
+                <img class="car-image" src="{{car.image_1.url}}" alt="">
+              </div>
+              {% endif %}
+            </div>
+            <div class="col-md-6">
+              {% if request.user.is_authenticated %}
+              <div class="">
+                <img class="car-image" src="{{car.image_3.url}}" alt="">
+              </div>
+              <div class="">
+                <img class="car-image" src="{{car.image_4.url}}" alt="">
+              </div>
+              {% else %}
+              <div class="">
+                <img class="car-image" src="{{car.image_3.url}}" alt="">
+              </div>
+              {% endif %}
+            </div>
+          </div>
         </div>
       </div>
-  
-  
-      <div class="col-md-3"></div>
+
+
+      <div class="col-md-1"></div>
     </div>
   </div>
 </section>

@@ -46,7 +46,7 @@ class Car(models.Model):
 
     @classmethod
     def search_cars(cls, car):
-        return cls.objects.filter(car_make__icontains=car).all()
+        return cls.objects.filter(model__icontains=car).all()
 
     def __str__(self):
         return self.car_make
