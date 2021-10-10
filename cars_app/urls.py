@@ -14,7 +14,11 @@ urlpatterns = [
     path('accounts/profile/',app_views.profile,name='profile'),
     path('update/',app_views.update_profile,name='update_profile'),
     path('add_car',app_views.add_car,name='add_car'),
-    path('car_view/<int:car_id>',app_views.car_view,name='car_view')
+    path('car_view/<int:car_id>',app_views.car_view,name='car_view'),
+    path('chats/', app_views.chat_view, name='chats'),
+    path('chat_messages/<int:sender>/<int:receiver>/', app_views.message_view, name='chat_messages'),
+    path('api/messages/<int:sender>/<int:receiver>/', app_views.message_list, name='message-detail'),
+    path('api/messages/', app_views.message_list, name='message-list'),
 
 ]
 if settings.DEBUG:

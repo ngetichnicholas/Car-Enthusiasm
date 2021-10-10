@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+{% load bootstrap4 %}
+{% block content %}
+<section>
+  <div class="container-fluid" id="detailsPage">
+    {% if messages %}
+    {% for message in messages %}
+    <div class="row ">
+      <div class="col-md-4"></div>
+      <div class="col-md-4">
+        <div class="alert text-center {{ message.tags }} alert-dismissible" role="alert" id="messages">
+          <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+          {{ message }}
+        </div>
+      </div>
+      <div class="col-md-4"></div>
+    </div>
+    {% endfor %}
+    {% endif %}
+    <div class="row">
+      <div class="col-md-3"></div>
+      <div class="col-md-6 car text-center">
+        <div class="card">
+          <div class="card-header">
+            <h5 class="car-name">{{car.car_make}}</h5>
+          </div>
+          <p>{{car.model}}</p>
+          <img src="{{car.image_1.url}}" alt="">
+        </div>
+      </div>
+  
+  
+      <div class="col-md-3"></div>
+    </div>
+  </div>
+</section>
+{% endblock %}

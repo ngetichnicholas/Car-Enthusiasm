@@ -1,0 +1,16 @@
+.title {
+    font-weight: 900;
+}
+.left-chat {
+    background-color: white;
+    float: left;
+    margin-bottom: 1rem;
+    padding: 1rem;
+}
+.right-chat {
+    background-color: #D3EEBE;
+    float: right;
+    margin-bottom: 1rem;
+    padding: 1rem;
+
+}

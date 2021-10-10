@@ -1,0 +1,44 @@
+{% extends "base.html" %}
+{% load bootstrap4 %}
+{% block content %}
+<section>
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-md-2"></div>
+      <div class="col-md-8">
+        <div class="text-center">
+          {% if cars%}
+          <h3 class="title">Found {{ cars|length }} cars of searched term <span
+              class="text-success">{{message}}</span></h3>
+          {% else %}
+          <h3 class="title"> Found 0 cars for the search term <span class="text-success">{{message}}</span></h3>
+          {% endif %}
+
+        </div>
+        <div class="row">
+          {% for car in cars %}
+          <div class="col-md-4 col-sm-6 text-center product">
+            <a href="{% url 'car_view' car.id  %}">
+              <img src="{{car.image.url}}" width="100%" alt="">
+            </a>
+            <a href="{% url 'car_view' car.id  %}">
+              <h5 class="car-name">{{car.name}}</h5>
+            </a>
+            <p>Price: <span class="price">Ksh {{car.selling_price}}</span></p>
+            <form class="text-center">
+              <a href="{% url 'add_to_cart' car.id %}" class="btn btn-primary">
+                Add to cart
+                <i class="fas fa-shopping-cart ml-1"></i>
+              </a>
+
+            </form>
+          </div>
+          {% endfor %}
+
+        </div>
+      </div>
+      <div class="col-md-2"></div>
+    </div>
+  </div>
+</section>
+{% endblock %}
