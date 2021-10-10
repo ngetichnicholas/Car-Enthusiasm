@@ -1,20 +1,35 @@
 .title {
-    font-weight: 900;
+  font-weight: 900;
 }
 .left-chat {
-    background-color: white;
-    float: left;
-    margin-bottom: 1rem;
-    padding: 1rem;
+  background-color: white;
+  float: left;
+  margin-bottom: 1rem;
+  padding: 1rem;
 }
 .right-chat {
-    background-color: #D3EEBE;
-    float: right;
-    margin-bottom: 1rem;
-    padding: 1rem;
-
+  background-color: #d3eebe;
+  float: right;
+  margin-bottom: 1rem;
+  padding: 1rem;
 }
 .car-image {
-    width: 100%;
-    margin-bottom: 1rem;
+  width: 100%;
+  margin-bottom: 1rem;
+}
+.table-img {
+  width: 15vh;
+  width: 15vh;
+}
+
+.head {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  text-align: center;
+  justify-content: start;
+}
+.title {
+  margin-bottom: 0;
+  color: #37783f;
 }

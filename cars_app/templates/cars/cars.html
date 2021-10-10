@@ -26,27 +26,31 @@
         <a class="nav-item nav-link text-center" href="{% url 'add_car' %}"><button class="btn btn-success">Add
             Car</button></a>
       </div>
-      <table class="table table-bordered table-responsive text-nowrap">
+      <table class="table table-bordered">
         <tr>
+          <th>Image</th>
           <th>Car Make</th>
           <th>Model</th>
-          <th>Image</th>
           <th>Edit</th>
+          <th>View</th>
           <th>Delete</th>
         </tr>
-        {% if cars %}
         {% for car in cars %}
         <tr>
+          <td><img class="table-img" src="{{car.image_1.url}}" alt=""></td>
           <td>{{car.car_make}}</td>
           <td>{{car.model}}</td>
-          <td><img class="table-img" src="{{car.image_1.url}}" alt=""></td>
-          <td><a href="{% url 'update_car' car.id %}" class="btn btn-success"><i class="fas fa-pen-nib"></i>
+          <td><a href="{% url 'update_car' car.id %}" class="btn btn-warning"><i class="fas fa-pen-nib"></i>
               Update</a></td>
+          <td><a href="{% url 'car_view' car.id %}" class="btn btn-success"><i class="fas fa-eye"></i> View</a></td>
           <td><a href="{% url 'delete_car' car.id %}" class="btn  btn-danger"><i class="fas fa-trash-alt"></i>
               Delete</a></td>
         </tr>
+        {% empty %}
+                    <tr>
+                        <td class="text-danger" colspan='6'>Your don't have cars yet. You can add by clicking the button above</td>
+                    </tr>
         {% endfor %}
-        {% endif %}
       </table>
     </div>
     <div class="col-md-1"></div>

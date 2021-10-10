@@ -109,6 +109,7 @@ def add_car(request):
     add_car_form = CarForm(request.POST,request.FILES)
     if add_car_form.is_valid():
       car = add_car_form.save(commit=False)
+      car.user_id = request.user
       car.save()
       messages.success(request, f'New car added!')
       return redirect('index')
@@ -121,7 +122,7 @@ def add_car(request):
 @login_required
 def cars(request):
   cars = Car.objects.filter(user_id = request.user.id).order_by('-model')
-  return render(request,'admin_panel/cars/cars.html',{'cars':cars})
+  return render(request,'cars/cars.html',{'cars':cars})
 
 @login_required
 def update_car(request, car_id):
