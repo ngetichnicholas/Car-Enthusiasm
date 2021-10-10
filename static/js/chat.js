@@ -1,5 +1,5 @@
-var text_box = '<div class="card-panel right" style="width: 75%; position: relative">' +
-        '<div style="position: absolute; top: 0; left:3px; font-weight: bolder" class="title">{sender}</div>' +
+var text_box = '<div class="card right-chat" style="width: 75%;">' +
+        '<div class="title">{sender}</div>' +
         '{message}' +
         '</div>';
 

@@ -34,3 +34,7 @@
   margin-bottom: 0;
   color: #37783f;
 }
+.card {
+    padding: 1rem;
+    margin: 0.5rem;
+}

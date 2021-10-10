@@ -171,6 +171,13 @@ def message_list(request, sender=None, receiver=None):
             return JsonResponse(serializer.data, status=201)
         return JsonResponse(serializer.errors, status=400)
 
+def chat_view(request):
+    if not request.user.is_authenticated:
+        return redirect('index')
+    if request.method == "GET":
+        return render(request, 'chat/chat.html',
+                      {'users': User.objects.exclude(username=request.user.username)})
+
 
 def message_view(request, sender, receiver):
     if not request.user.is_authenticated:
