@@ -80,7 +80,7 @@ def car_view(request,car_id):
   current_user = request.user
   car = Car.objects.get(pk = car_id)
   
-  return render(request, 'car_page.html', {'current_user':current_user,'car':car})
+  return render(request, 'cars/car_page.html', {'current_user':current_user,'car':car})
 
 @login_required
 def profile(request):
@@ -116,7 +116,37 @@ def add_car(request):
   else:
     add_car_form = CarForm()
     
-  return render(request, 'add_car.html',{'add_car_form':add_car_form})
+  return render(request, 'cars/add_car.html',{'add_car_form':add_car_form})
+
+@login_required
+def cars(request):
+  cars = Car.objects.filter(user_id = request.user.id).order_by('-model')
+  return render(request,'admin_panel/cars/cars.html',{'cars':cars})
+
+@login_required
+def update_car(request, car_id):
+  car = Car.objects.get(pk=car_id)
+  if request.method == 'POST':
+    update_car_form = CarForm(request.POST,request.FILES, instance=car)
+    if update_car_form.is_valid():
+      update_car_form.save()
+      messages.success(request, f'car updated!')
+      return redirect('cars')
+  else:
+    update_car_form = CarForm(instance=car)
+  context = {
+      "update_car_form":update_car_form,
+      "car":car
+  }
+  return render(request, 'cars/update_car.html', context)
+
+@login_required
+def delete_car(request,car_id):
+  car = Car.objects.get(pk=car_id)
+  if car:
+    car.delete_car()
+    messages.success(request, f'car deleted!')
+  return redirect('cars')
 
 @csrf_exempt
 def message_list(request, sender=None, receiver=None):
