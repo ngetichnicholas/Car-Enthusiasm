@@ -2,26 +2,30 @@
 {% block content %}
 <div class="container-fluid" style="height: 80vh">
     <div class="row">
-        <div class="col-md-4">
-            <div class="card">
-                <div class="collection">
-                    {% for user in users %}
-                    <a href="{% url 'chat_messages' request.user.id user.id %}" id="user{{ user.id }}"
-                        class="collection-item row">
-                        <div class="col s8">
-                            <span class="title" style="font-weight: bolder">{{ user.username }}</span>
-                        </div>
-                    </a>
-                    {% endfor %}
-                </div>
-            </div>
-        </div>
+        <div class="col-md-2"></div>
         <div class="col-md-8">
             <div class="card">
-                <div id="board" class="section grey lighten-3" style="height: 68vh; padding: 5px; overflow-y: scroll">
-                    {% block messages %}
-
-                    {% endblock %}
+                <div id="board" class="section grey lighten-3" style="padding: 5px;">
+                    {% for message in messages %}
+                    {% if message.sender == request.user %}
+                    <div class="card right-chat" style="width: 75%;">
+                        <div class="title">You</div>
+                        {{ message }}
+                    </div>
+                    {% else %}
+                    <div class="card left-chat" style="width: 75%;">
+                        <div class="title">{{ message.sender }}</div>
+                        {{ message }}
+                    </div>
+                    {% endif %}
+                    {% endfor %}
+                    <script>
+                        $(function () {
+                            $('#user{{ receiver.id }}').addClass('active');
+                            //Call receive function each 1 seconds to check for new messages in the database
+                            setInterval(receive, 1000)
+                        })
+                    </script>
                 </div>
                 <form id="chat-box" class="form-group" method="post">
                     {% csrf_token %}
@@ -31,13 +35,13 @@
                                 placeholder="Type your message..">
                         </div>
                         <div class="col-md-2">
-                            <button class="btn btn-default" style="background-color: gray"><i
-                                    class="material-icons">send</i></button>
+                            <button class="btn btn-primary"><i class="material-icons">send</i></button>
                         </div>
                     </div>
                 </form>
             </div>
         </div>
+        <div class="col-md-2"></div>
     </div>
 </div>
 {% load static %}

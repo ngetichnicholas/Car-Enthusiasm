@@ -35,8 +35,7 @@ class Car(models.Model):
     image_2 = models.ImageField(upload_to='cars')
     image_3 = models.ImageField(upload_to='cars')
     image_4 = models.ImageField(upload_to='cars')
-    city = models.CharField(max_length=255)
-    car_location = PlainLocationField(based_fields=['city'], zoom=7)
+    location = models.CharField(max_length=255)
     user_id = models.ForeignKey(User,on_delete=CASCADE)
 
     def save_car(self):

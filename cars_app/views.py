@@ -79,8 +79,9 @@ def login(request):
 def car_view(request,car_id):
   current_user = request.user
   car = Car.objects.get(pk = car_id)
-  
-  return render(request, 'cars/car_page.html', {'current_user':current_user,'car':car})
+  user = User.objects.get(username = car.user_id)
+ 
+  return render(request, 'cars/car_page.html', {'user':user,'current_user':current_user,'car':car})
 
 @login_required
 def profile(request):
@@ -170,19 +171,12 @@ def message_list(request, sender=None, receiver=None):
             return JsonResponse(serializer.data, status=201)
         return JsonResponse(serializer.errors, status=400)
 
-def chat_view(request):
-    if not request.user.is_authenticated:
-        return redirect('index')
-    if request.method == "GET":
-        return render(request, 'chat/chat.html',
-                      {'users': User.objects.exclude(username=request.user.username)})
-
 
 def message_view(request, sender, receiver):
     if not request.user.is_authenticated:
         return redirect('index')
     if request.method == "GET":
-        return render(request, "chat/messages.html",
+        return render(request, 'chat/chat.html',
                       {'users': User.objects.exclude(username=request.user.username),
                        'receiver': User.objects.get(id=receiver),
                        'messages': Message.objects.filter(sender_id=sender, receiver_id=receiver) |

@@ -10,7 +10,7 @@
       <div class="col-md-4">
         <div class="alert text-center {{ message.tags }} alert-dismissible" role="alert" id="messages">
           <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
+            <button aria-hidden="true">&times;</button>
           </button>
           {{ message }}
         </div>
@@ -23,10 +23,16 @@
       <div class="col-md-1"></div>
       <div class="col-md-10 car text-center">
         <div class="">
-          <div class="row">
+          <div class="">
             <h5 class="car-name">Car Number: {{car.car_make}}, Model {{car.model}}</h5>
+            {% if current_user.id is not user.id%}
+            <a href="{% url 'chat_messages' request.user.id user.id %}" id="user{{ user.id }}"
+            class="">
+            <button class="btn btn-success" style="font-weight: bolder">Chat with owner:{{ user.username }}</button>
+            {% endif %}
+        </a>
           </div>
-          <div class="row">
+          <div style="margin-top: 1rem;" class="row">
             <div class="col-md-6">
               {% if request.user.is_authenticated %}
               <div class="">
@@ -55,6 +61,10 @@
               </div>
               {% endif %}
             </div>
+          </div>
+          <div class="map text-center">
+            <h2>Map Location: {{car.location}}</h2>
+            <iframe src="https://maps.google.com/maps?q={{car.location}}%20street&t=&z=13&ie=UTF8&iwloc=&output=embed" frameborder="0" style="border:0; width: 100%; height: 290px;" allowfullscreen></iframe>
           </div>
         </div>
       </div>

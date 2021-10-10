@@ -35,7 +35,7 @@ class UpdateUserForm(forms.ModelForm):
 class CarForm(forms.ModelForm):
   class Meta:
     model = Car
-    fields = ['car_make','model','year_manufactured','image_1','image_2','image_3','image_4','city','car_location']
+    fields = ['car_make','model','year_manufactured','image_1','image_2','image_3','image_4','location']
     widgets = {
             'year_manufactured': widgets.DateInput(attrs={'type': 'date'})
         }
