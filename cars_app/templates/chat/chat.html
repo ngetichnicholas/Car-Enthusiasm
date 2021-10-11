@@ -2,19 +2,20 @@
 {% block content %}
 <div class="container-fluid" style="height: 80vh">
     <div class="row">
-        <div class="col-md-2"></div>
-        <div class="collection">
-            <h2>Select contact</h2>
-            {% for user in users %}
-            <a href="{% url 'chat_messages' request.user.id user.id %}" id="user{{ user.id }}"
-                class="collection-item row">
-                <img src="https://frontend-1.adjust.com/new-assets/images/site-images/interface/user.svg"
-                    class="col s4">
-                <div class="col s8">
-                    <span class="title" style="font-weight: bolder">{{ user.username }}</span>
-                </div>
-            </a>
-            {% endfor %}
+        <div class="col-md-2">
+            <div class="collection">
+                <h4>Select contact</h4>
+                {% for user in users %}
+                <a href="{% url 'chat_messages' request.user.id user.id %}" id="user{{ user.id }}"
+                    class="collection-item row">
+                    <img src="https://frontend-1.adjust.com/new-assets/images/site-images/interface/user.svg"
+                        class="col s4">
+                    <div class="col s8">
+                        <span class="title" style="font-weight: bolder">{{ user.username }}</span>
+                    </div>
+                </a>
+                {% endfor %}
+            </div>
         </div>
         <div class="col-md-8">
             <div class="card">
