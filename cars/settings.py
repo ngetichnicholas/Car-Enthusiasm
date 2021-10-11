@@ -15,6 +15,10 @@ import django_heroku
 from decouple import config, Csv
 import dj_database_url
 
+from os import environ
+GEOS_LIBRARY_PATH = environ.get('GEOS_LIBRARY_PATH')
+GDAL_LIBRARY_PATH = environ.get('GDAL_LIBRARY_PATH')
+
 cloudinary.config(
     cloud_name =config('CLOUD_NAME'),
     api_key=config('CLOUD_API_KEY'), 
