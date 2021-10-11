@@ -4,7 +4,6 @@ from django.forms import fields
 from .models import User
 from .models import *
 from django.core.validators import MinLengthValidator,MaxLengthValidator
-from location_field.forms.plain import PlainLocationField
 from django.forms import Form, ModelForm, DateField, widgets
 
 

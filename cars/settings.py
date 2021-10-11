@@ -15,7 +15,6 @@ import django_heroku
 from decouple import config, Csv
 import dj_database_url
 
-
 cloudinary.config(
     cloud_name =config('CLOUD_NAME'),
     api_key=config('CLOUD_API_KEY'), 
@@ -49,7 +48,6 @@ INSTALLED_APPS = [
     'cloudinary',
     'crispy_forms',
     'rest_framework',
-    'location_field.apps.DefaultConfig',
     
     ]
 
@@ -162,13 +160,6 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 django_heroku.settings(locals())
 AUTH_USER_MODEL = 'cars_app.User'
 
-
-LOCATION_FIELD = {
-'provider.google.api': '//maps.google.com/maps/api/js?sensor=false',
-'provider.google.api_key': 'AIzaSyAdquW1ULcql53ofNtujjjFf1Ty5TGRzLM',
-'provider.google.api_libraries': '',
-'provider.google.map.type': 'ROADMAP',
-}
 
 REST_FRAMEWORK = {
     # Use Django's standard `django.contrib.auth` permissions,
