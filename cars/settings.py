@@ -52,9 +52,8 @@ INSTALLED_APPS = [
     'cloudinary',
     'crispy_forms',
     'rest_framework',
-    
     ]
-
+    
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
@@ -172,6 +171,7 @@ REST_FRAMEWORK = {
         'rest_framework.permissions.IsAuthenticatedOrReadOnly'
     ]
 }
+
 from django.contrib.messages import constants as messages
 
 MESSAGE_TAGS = {

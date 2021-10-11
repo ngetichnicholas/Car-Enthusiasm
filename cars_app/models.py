@@ -24,8 +24,6 @@ An entry involves the following; car make, model, year, a few images of the car,
  for a showroom location where they take their car on weekends to display
 """
 
-from django.contrib.gis.db import models as gis_models
-
 class Car(models.Model):
     car_make = models.CharField(max_length=50)
     model = models.CharField(max_length=30)
